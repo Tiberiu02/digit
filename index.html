@@ -1,0 +1,25 @@
+<html>
+<head>
+    <style>
+      canvas{
+        border: 1px solid gray;
+      }
+      * {
+        font-size: 20px;
+				margin: 0px;
+      }
+    </style>
+</head>
+<body>
+		<canvas width="150px" height="150px" onmousedown="mouseDown(event)" id="myCanvas" onMouseMove="mouseMove(event)" onmouseup="mouseRelease()"></canvas><br>
+		<script src="client.js"></script>
+		<pre id="s">Draw a digit!</pre>
+		<pre>Please try to follow these rules for the best results:
+- draw the digit as big as possible, with big and long lines
+- draw the curves smooth without peeks
+- draw the straight lines straight
+- draw the peeks sharp and well defined
+- draw the 4 as it is on your keyboard
+- if the program keeps not catching the digit try drawing at different speeds/sizes<pre>
+</body>
+</html>
