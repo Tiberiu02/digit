@@ -14,7 +14,7 @@ var scale;
 var minX, minY, maxX, maxY;
 
 function mouseDown(e) {
-		document.getElementById("s").innerHTML =  "I think it's a ..."
+    document.getElementById("s").innerHTML = "I think it's a ..."
 
     points = [];
     derivative = [];
@@ -32,8 +32,8 @@ function mouseDown(e) {
 
 function mouseRelease() {
     b = 0;
-		var d = Math.max(maxY - minY, maxX - minY);
-		scale = 100 / d;
+    var d = Math.max(maxY - minY, maxX - minY);
+    scale = 100 / d;
 
     derivative = depeek(derivative, d / 40, 20);
     derivative = depeek(derivative, d / 40, 20);
@@ -46,12 +46,12 @@ function mouseRelease() {
     }
 
     var s = splitVectorIntoSegments(derivative);
-		var digit = classify(s, derivative, points);
+    var digit = classify(s, derivative, points);
 
-		if (digit != undefined)
-				document.getElementById("s").innerHTML = "I think it's a " + digit + "!";
-		else
-				document.getElementById("s").innerHTML = "I don't recognize any pattern, can you draw it again?";
+    if (digit != undefined)
+        document.getElementById("s").innerHTML = "I think it's a " + digit + "!";
+    else
+        document.getElementById("s").innerHTML = "I don't recognize any pattern, can you draw it again?";
 }
 
 function compareArray(a, b) {
@@ -64,7 +64,7 @@ function compareArray(a, b) {
 }
 
 function classify(seg, d, p) {
-		console.log(seg);
+    console.log(seg);
 
     if (compareArray(seg, [1]) || compareArray(seg, [-1])) {
         var a = 0;
@@ -180,10 +180,10 @@ function mouseMove(e) {
     x = e.clientX;
     y = e.clientY;
 
-		minX = Math.min(minX, x);
-		maxX = Math.max(maxX, x);
-		minY = Math.min(minY, y);
-		maxY = Math.max(maxY, y);
+    minX = Math.min(minX, x);
+    maxX = Math.max(maxX, x);
+    minY = Math.min(minY, y);
+    maxY = Math.max(maxY, y);
 
     if (b == 0 || dist(points[points.length - 1][0] - x, points[points.length - 1][1] - y) < 2) {
         return;
