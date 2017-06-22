@@ -5,7 +5,7 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 var points = [];
-var derivative = [];
+var angle = [];
 var d = 0;
 var a = 0;
 var x1;
@@ -17,7 +17,7 @@ function mouseDown(e) {
     document.getElementById("s").innerHTML = "I think it's a ..."
 
     points = [];
-    derivative = [];
+    angle = [];
 
     ctx.clearRect(0, 0, 300, 300);
 
@@ -35,18 +35,18 @@ function mouseRelease() {
     var d = Math.max(maxY - minY, maxX - minY);
     scale = 100 / d;
 
-    derivative = depeek(derivative, d / 40, 20);
-    derivative = depeek(derivative, d / 40, 20);
-    derivative = smooth(derivative, 5 * scale);
-    derivative = adjust(derivative, 5 * scale);
+    angle = depeek(angle, d / 40, 20);
+    angle = depeek(angle, d / 40, 20);
+    angle = smooth(angle, 5 * scale);
+    angle = adjust(angle, 5 * scale);
 
     for (var i = 0; i < 100; i++) {
-        derivative = smooth(derivative, 10 * scale);
-        derivative = depeek(derivative, 20, 20 * scale);
+        angle = smooth(angle, 10 * scale);
+        angle = depeek(angle, 20, 20 * scale);
     }
 
-    var s = splitVectorIntoSegments(derivative);
-    var digit = classify(s, derivative, points);
+    var s = splitVectorIntoSegments(angle);
+    var digit = classify(s, angle, points);
 
     if (digit != undefined)
         document.getElementById("s").innerHTML = "I think it's a " + digit + "!";
@@ -201,7 +201,7 @@ function mouseMove(e) {
 
         a = Math.atan2(ox - x, oy - y) / Math.PI * 25 + 300;
 
-        derivative.push(a);
+        angle.push(a);
 
         d++;
 
